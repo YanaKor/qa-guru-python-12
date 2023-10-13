@@ -28,7 +28,7 @@ def test_fill_authorization_form():
     browser.element('#react-select-3-input').type('Uttar Pradesh').press_enter()
     browser.element('#react-select-4-input').type('Agra').press_enter()
 
-    browser.element('#submit').should(be.visible).click()
+    browser.element('#submit').should(be.clickable).click()
 
     browser.element('#example-modal-sizes-title-lg').should(have.exact_text(
         'Thanks for submitting the form'))

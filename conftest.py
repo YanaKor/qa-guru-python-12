@@ -6,9 +6,12 @@ from selene import Browser, Config
 
 from utils import attach
 
+
 @pytest.fixture(scope='function')
 def setup_browser(request):
-    browser_version = "100.0"
+    browser_version = "116.0"
+    # browser.config.window_width = 1920
+    # browser.config.window_height = 1080
     options = Options()
     selenoid_capabilities = {
         "browserName": "chrome",
