@@ -3,7 +3,7 @@ import os
 
 
 def test_fill_authorization_form():
-    browser.open('/automation-practice-form')
+    browser.open('http://demoqa.com/automation-practice-form')
     browser.all('[id^=google_ads][id$=container__]').with_(timeout=10).wait_until(
         have.size_greater_than_or_equal(3)
     )
