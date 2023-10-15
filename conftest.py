@@ -1,6 +1,7 @@
 import pytest
 
 from selenium import webdriver
+from selene.support.shared import browser
 from selenium.webdriver.chrome.options import Options
 from selene import Browser, Config
 
@@ -8,10 +9,9 @@ from utils import attach
 
 
 @pytest.fixture(scope='function')
-def setup_browser(request):
-    browser_version = "116.0"
-    # browser.config.window_width = 1920
-    # browser.config.window_height = 1080
+def setup_browser():
+    browser.config.base_url = 'https://github.com'
+    browser_version = "100.0"
     options = Options()
     selenoid_capabilities = {
         "browserName": "chrome",
@@ -27,12 +27,12 @@ def setup_browser(request):
         options=options
     )
 
-    browser = Browser(Config(driver))
-    yield browser
+    browser_new = Browser(Config(driver))
+    yield browser_new
 
-    attach.add_screenshot(browser)
-    attach.add_logs(browser)
-    attach.add_html(browser)
-    attach.add_video(browser)
+    attach.add_screenshot(browser_new)
+    attach.add_logs(browser_new)
+    attach.add_html(browser_new)
+    attach.add_video(browser_new)
 
-    browser.quit()
+    browser_new.quit()
