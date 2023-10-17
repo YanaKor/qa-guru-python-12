@@ -28,8 +28,8 @@ def test_fill_authorization_form():
         browser.element('#uploadPicture')
         browser.element('#currentAddress').type('Smolnaya street')
         browser.element('#state').click()
-        browser.element('#react-select-3-input').type('Uttar Pradesh').press_enter()
-        browser.element('#react-select-4-input').type('Agra').press_enter()
+        browser.element('//input[@id="react-select-3-input"]').type('Uttar Pradesh').press_enter()
+        browser.element('//input[@id="react-select-4-input"]').type('Agra').press_enter()
 
     with allure.step('Submit form'):
         browser.element('#submit').should(be.clickable).click()
