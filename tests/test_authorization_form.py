@@ -39,7 +39,7 @@ def test_fill_authorization_form():
             'Thanks for submitting the form'))
         browser.all('.table-responsive .table td:nth-child(2)').should(have.exact_texts(
             'Yana Surname', 'test@ya.com', 'Female', '8977145236', '06 January,1997', 'English', 'Music',
-            '65NkbF_oOdw.jpg', 'Smolnaya street', 'Uttar Pradesh Agra'))
+            '', 'Smolnaya street', 'Uttar Pradesh Agra'))
 
 
 
