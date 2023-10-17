@@ -1,21 +1,21 @@
 import pytest
 
 from selenium import webdriver
-from selene.support.shared import browser
+from selene import browser
 from selenium.webdriver.chrome.options import Options
-from selene import Browser, Config
 
 from utils import attach
 
 
 @pytest.fixture(scope='function')
 def setup_browser():
-    browser.config.base_url = 'https://github.com'
-    browser_version = "100.0"
+    # browser.config.base_url = 'https://demoqa.com'
+    browser.config.window_width = 1920
+    browser.config.window_height = 1080
     options = Options()
     selenoid_capabilities = {
         "browserName": "chrome",
-        "browserVersion": browser_version,
+        "browserVersion": "100.0",
         "selenoid:options": {
             "enableVNC": True,
             "enableVideo": True
@@ -27,12 +27,12 @@ def setup_browser():
         options=options
     )
 
-    browser_new = Browser(Config(driver))
-    yield browser_new
+    browser.config.driver = driver
+    yield
 
-    attach.add_screenshot(browser_new)
-    attach.add_logs(browser_new)
-    attach.add_html(browser_new)
-    attach.add_video(browser_new)
+    attach.add_screenshot(browser)
+    attach.add_logs(browser)
+    attach.add_html(browser)
+    attach.add_video(browser)
 
-    browser_new.quit()
+    browser.quit()
